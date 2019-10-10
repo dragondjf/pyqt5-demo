@@ -15,10 +15,10 @@ class CApp(QObject):
         self.initView()
         self.initControllers()
 
-        self.initConnect()
 
     def initView(self):
         self.calculator = Calculator()
+        logger.info(self.calculator)
 
     def initControllers(self):
         self.calController  = CalController()
@@ -30,9 +30,6 @@ class CApp(QObject):
         logger.info(self.bController)
         logger.info(self.fController)
 
-
-    def initConnect(self):
-        pass
-
     def show(self):
-        self.calculator.show()
+        if hasattr(self, "calculator"):
+            self.calculator.show()
