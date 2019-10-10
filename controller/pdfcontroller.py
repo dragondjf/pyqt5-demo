@@ -4,14 +4,23 @@ from PyQt5.QtCore import *
 import os
 import json
 from reportbro import Report, ReportBroError
+from app import signalManager
 
 
 class PDFController(QObject):
 
     def __init__(self):
         super(PDFController, self).__init__()
+
+        self.initData()
+        self.initConnect()
+
+    def initData(self):
         self.template = os.sep.join([os.getcwd(), "controller", "tpce-simple.json"])
         self.data = os.sep.join([os.getcwd(), "controller", "data.json"])
+
+    def initConnect(self):
+        signalManager.buttonClicked.connect(self.digtailPDF)
 
     def digtailPDF(self, name):
     	self.pdf(self.template, self.data, "%s.pdf" % name)

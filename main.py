@@ -42,18 +42,15 @@
 #############################################################################
 
 from PyQt5.QtWidgets import *
-from view import Calculator
 from app import CApp
-
 
 if __name__ == '__main__':
 
     import sys
 
     app = QApplication(sys.argv)
-    calc = Calculator()
-    calc.show()
 
     cApp = CApp()
+    cApp.show()
 
     sys.exit(app.exec_())
